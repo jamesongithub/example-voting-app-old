@@ -9,15 +9,15 @@ steps:
   BuildingDockerImage:
     title: Building Docker Image
     type: build
-    image_name: worker
+    image_name: example-voting-app/worker
     working_directory: ./worker/
-    tag: '${{CF_SHORT_REVISION}}'
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
     dockerfile: Dockerfile
-    registry: default
-#  PushDockerImage:
-#    title: Pushing Docker Image
-#    candidate: ${{CF_BUILD_ID}}
-#    type: push
-#    image_name: example-voting-app/worker
-#    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
-#    registry: default
+    disable_push: true
+  PushDockerImage:
+    title: Pushing Docker Image
+    candidate: ${{build_step}}
+    type: push
+    image_name: example-voting-app-worker
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+    registry: dockerhub
