@@ -23,6 +23,7 @@ spec:
       branchRegexInput: regex
       pullRequestTargetBranchRegex: /master/gi
       provider: github
+      context: github
   contexts:
     - CF_HELM_DEFAULT
   variables:

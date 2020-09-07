@@ -21,6 +21,7 @@ spec:
       branchRegexInput: regex
       modifiedFilesGlob: tests/**
       provider: github
+      context: github
   contexts: []
   specTemplate:
     location: git

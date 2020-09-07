@@ -19,6 +19,7 @@ spec:
       branchRegex: /^(?!.*master).*$/gi
       modifiedFilesGlob: example-voting-app/example-voting-app/**
       provider: github
+      context: github
   contexts: []
   specTemplate:
     location: git

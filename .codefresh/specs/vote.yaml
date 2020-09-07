@@ -20,6 +20,7 @@ spec:
       branchRegexInput: regex
       modifiedFilesGlob: vote/**
       provider: github
+      context: github
   specTemplate:
     location: git
     repo: CF_REPO_OWNER/example-voting-app

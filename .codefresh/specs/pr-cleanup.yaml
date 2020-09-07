@@ -18,6 +18,7 @@ spec:
       commentRegex: /.*/gi
       branchRegex: /.*/gi
       provider: github
+      context: github
   contexts: []
   variables:
     - key: KUBE_CONTEXT
