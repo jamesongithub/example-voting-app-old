@@ -13,6 +13,7 @@ steps:
     working_directory: ./worker/
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
     dockerfile: Dockerfile
+    disable_push: true
   PushDockerImage:
     title: Pushing Docker Image
     candidate: ${{build_step_name}}
