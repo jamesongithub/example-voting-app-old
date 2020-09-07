@@ -62,3 +62,16 @@ steps:
       - sed -i 's/KUBERNETES_NAMESPACE/${{KUBERNETES_NAMESPACE}}/g' *
       - find . -iname '*.yaml' -exec codefresh create -f {} \;
       - find . -iname '*.yaml' -exec codefresh replace -f {} \;
+
+spec:
+  triggers:
+    - type: git
+      name: ${{GITHUB_ORG}}/example-voting-app
+      repo: ${{GITHUB_ORG}}/example-voting-app
+      events:
+        - push.heads
+      pullRequestAllowForkEvents: false
+      branchRegexInput: regex
+      modifiedFilesGlob: ./codefresh.yml
+      provider: github
+      context: github
