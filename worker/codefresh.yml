@@ -15,6 +15,7 @@ steps:
     dockerfile: Dockerfile
   PushDockerImage:
     title: Pushing Docker Image
+    candidate: ${{build_step_name}}
     type: push
     image_name: example-voting-app/worker
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
