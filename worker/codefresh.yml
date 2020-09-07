@@ -16,7 +16,7 @@ steps:
     disable_push: true
   PushDockerImage:
     title: Pushing Docker Image
-    candidate: ${{build_step_name}}
+    candidate: ${{CF_BUILD_ID}}
     type: push
     image_name: example-voting-app/worker
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
