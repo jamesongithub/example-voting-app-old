@@ -52,7 +52,7 @@ steps:
 
 # Replace CF_REPO_OWNER, KUBERNETES_CLUSTER_NAME and KUBERNETES_NAMESPACE in specs files and Deploy Pipelines
 
-  CreateCodefreshPipelines:
+  CreateAndReplaceCodefreshPipelines:
     image: codefresh/cli
     stage: "Deploy Codefresh Pipelines"
     working_directory: ./.codefresh/specs
@@ -61,3 +61,4 @@ steps:
       - sed -i 's/KUBERNETES_CLUSTER_NAME/${{KUBERNETES_CLUSTER_NAME}}/g' *
       - sed -i 's/KUBERNETES_NAMESPACE/${{KUBERNETES_NAMESPACE}}/g' *
       - find . -iname '*.yaml' -exec codefresh create -f {} \;
+      - find . -iname '*.yaml' -exec codefresh replace -f {} \;
