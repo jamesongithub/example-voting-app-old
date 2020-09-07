@@ -11,10 +11,9 @@ steps:
     type: build
     image_name: worker
     working_directory: ./worker/
-    tag: ${{CF_SHORT_REVISION}}
+    tag: '${{CF_SHORT_REVISION}}'
     dockerfile: Dockerfile
     registry: default
-    disable_push: true
 #  PushDockerImage:
 #    title: Pushing Docker Image
 #    candidate: ${{CF_BUILD_ID}}
