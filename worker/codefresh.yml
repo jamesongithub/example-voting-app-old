@@ -9,9 +9,9 @@ steps:
   BuildingDockerImage:
     title: Building Docker Image
     type: build
-    image_name: example-voting-app/worker
+    image_name: jamesoverdocker/example-voting-app/worker
     working_directory: ./worker/
-    tag: 'jamesoverdocker/${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
     dockerfile: Dockerfile
     registry: default
     disable_push: true
