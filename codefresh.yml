@@ -7,6 +7,16 @@ stages:
 
 steps:
 
+# Set global vars
+  SetGlobalVars:
+    title: Setting build vars...
+    image: alpine
+    commands:
+      - cf_export GITHUB_ORG=jamesongithub
+      - cf_export KUBERNETES_CLUSTER_NAME=DEV-AZURE
+      - cf_export KUBERNETES_CONTEXT=DEV-AZURE
+      - cf_export KUBERNETES_NAMESPACE=codefresh
+
 # Clone repository contents
 
   main_clone:
@@ -29,8 +39,8 @@ steps:
     image:  codefresh/cfstep-helm
     stage: "Prepare Kubernetes Cluster"
     commands:
-      - kubectl config use-context '${{KUBERNETES_CLUSTER_NAME}}'
-      - kubectl create namespace ${{KUBERNETES_NAMESPACE}}
+      - kubectl config use-context ${{KUBERNETES_CONTEXT}}
+#      - kubectl create namespace ${{KUBERNETES_NAMESPACE}}
 
 # Create Image Pull Secret
 
@@ -38,7 +48,7 @@ steps:
     image: codefresh/cli
     stage: "Prepare Kubernetes Cluster"
     commands:
-      - codefresh generate image-pull-secret --cluster '${{KUBERNETES_CLUSTER_NAME}}' --namespace ${{KUBERNETES_NAMESPACE}} --registry cfcr
+      - codefresh generate image-pull-secret --cluster '${{KUBERNETES_CLUSTER_NAME}}' --namespace ${{KUBERNETES_NAMESPACE}} --registry default
 
 # Replace CF_REPO_OWNER, KUBERNETES_CLUSTER_NAME and KUBERNETES_NAMESPACE in specs files and Deploy Pipelines
 
