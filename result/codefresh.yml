@@ -13,3 +13,11 @@ steps:
     working_directory: ./result/
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
     dockerfile: Dockerfile
+    disable_push: true
+  PushDockerImage:
+    title: Pushing Docker Image
+    candidate: ${{BuildingDockerImage}}
+    type: push
+    image_name: example-voting-app-result
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+    registry: dockerhub

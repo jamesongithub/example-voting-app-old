@@ -18,6 +18,6 @@ steps:
     title: Pushing Docker Image
     candidate: ${{BuildingDockerImage}}
     type: push
-    image_name: example-voting-app/worker
+    image_name: example-voting-app-worker
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
     registry: dockerhub
