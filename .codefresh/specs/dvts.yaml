@@ -9,7 +9,6 @@ metadata:
   project: example-voting-app
 spec:
   triggers: []
-  contexts: []
   variables:
     - key: BROWSERS
       value: chrome firefox
