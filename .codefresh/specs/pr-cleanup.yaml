@@ -17,9 +17,9 @@ spec:
       pullRequestAllowForkEvents: true
       commentRegex: /.*/gi
       branchRegex: /.*/gi
+      branchRegexInput: regex
       provider: github
       context: github
-  contexts: []
   variables:
     - key: KUBE_CONTEXT
       value: 'KUBERNETES_CLUSTER_NAME'
