@@ -16,7 +16,8 @@ spec:
         - push.heads
       pullRequestAllowForkEvents: false
       commentRegex: /.*/gi
-      branchRegex: /^(?!.*master).*$/gi
+      branchRegex: /.*/gi
+#      branchRegex: /^(?!.*master).*$/gi
       branchRegexInput: regex
       modifiedFilesGlob: worker/**
       provider: github
