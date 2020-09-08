@@ -60,5 +60,6 @@ steps:
       - sed -i 's/CF_REPO_OWNER/${{GITHUB_ORG}}/g' *
       - sed -i 's/KUBERNETES_CLUSTER_NAME/${{KUBERNETES_CLUSTER_NAME}}/g' *
       - sed -i 's/KUBERNETES_NAMESPACE/${{KUBERNETES_NAMESPACE}}/g' *
+      - find . -iname '*.yaml' -exec codefresh delete -f {} \;
       - find . -iname '*.yaml' -exec codefresh create -f {} \;
-      - find . -iname '*.yaml' -exec codefresh replace -f {} \;
+#      - find . -iname '*.yaml' -exec codefresh replace -f {} \;
